@@ -51,7 +51,8 @@ server.get('/mobile/*',function(req, response){
         response.end();
     });
 });
-server.listen(8080);
+var port = process.env.PORT || 8080;
+server.listen(port);
 var everyone = nowjs.initialize(server);
 
 
