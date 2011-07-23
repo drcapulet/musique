@@ -25,7 +25,7 @@ $(function () {
 		timer = setTimeout(function () {
 			var search = $searchBox[0].value;
 			$searchResults.fadeOut(10).html('').fadeIn(10);
-			$.get('http://localhost:4567/search?q='+search, function (response) {
+			$.get('http://musique.herokuapp.com/search?q='+search, function (response) {
 				response = $.parseJSON(response);
 				searchResults = response;
 				var add=[];
