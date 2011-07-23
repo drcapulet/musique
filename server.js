@@ -5,12 +5,20 @@
     express = require("express"),
     redislib = require("redis"),
     util = require("util"),
-
+	url = require("url"),
+	
     PORT = 8003,
     WEBROOT = path.join(path.dirname(__filename), '/webroot'),
-    redis = redislib.createClient(),
     nowjs = require("now");
 
+if (process.env.REDISTOGO_URL) {
+	var rtg   = url.parse(process.env.REDISTOGO_URL);
+	var redis = redislib.createClient(rtg.port, rtg.hostname);
+
+	redis.auth(rtg.auth.split(":")[1]);
+} else {
+  var redis = require("redis").createClient();
+}
 
 
 //Create express server
@@ -19,6 +27,7 @@ var server = express.createServer();
 server.use('/static',express.static(WEBROOT));
 //Define route for the homepage
 server.get('/',function(req, response){
+	console.log(redis.keys('*'));
     fs.readFile(WEBROOT+'/index.html', function(err, data){
         response.writeHead(200, {'Content-Type':'text/html'});
         response.write(data);
