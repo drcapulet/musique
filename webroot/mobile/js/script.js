@@ -59,7 +59,7 @@
         var $searchResults = document.getElementById('search-results');
         var $searchBox = document.getElementById('song-search-box');
 
-        jQuery.get('http://musique.herokuapp.com/search?q='+search, function (response) {
+        jQuery.get('http://musique-api.herokuapp.com/search?q='+search, function (response) {
                 response = $.parseJSON(response);
                 var add=[];
                 try {
