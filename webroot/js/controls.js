@@ -18,14 +18,14 @@ $(document).ready(function(){
         console.debug('playlist');
         data = JSON.parse(data);
 		if(data == null) {
-			audioPlaylist.playlistUpdate([], 0);
+			audioPlaylist.playlistUpdate([], 0, false);
 		} else {
-	        audioPlaylist.playlistUpdate(data.playlist, data.current);
+	        audioPlaylist.playlistUpdate(data.playlist, data.current, data.playing);
 		}
     }
 
     now.receiveUpdateVolume = function(volume){
         $('#song-player').jPlayer("volume", volume);
-        $('#volume-slider').val(volume*100);
+        $('#volume-slider input[type=range]').val(volume*100);
     }
 });

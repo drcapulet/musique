@@ -1,0 +1,84 @@
+html,body,div,span,applet,object,iframe,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,tabel-cell,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{border:0;outline:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:none;}ins{text-decoration:none;}del{text-decoration:line-through;}table{border-collapse:collapse;border-spacing:0;}
+
+html,body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background: #222222;
+}
+
+#song-header-wrapper {
+	background: #222;
+	width: 800px;
+	position: fixed;
+	left: 50%;
+	margin-left: -425px;
+	z-index: 1000;
+	padding: 50px 25px 0 25px;
+}
+
+#song-header {
+	height: 100px;
+	padding: 15px;
+	background: #333 url(/static/img/linen.png);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	vertical-align: top;
+	-webkit-box-shadow:0 0 10px #000;
+	-moz-box-shadow: 0 0 10px #000; 
+	box-shadow:0 0 10px #000;
+	display: table;
+	width: 100%;
+	border-bottom: 1px solid #111;
+	color: #fff;
+	font-family: 'Rosario', Helvetica, Arial, sans-serif;
+}
+
+#song-header h1 {
+	margin-top: 0px;
+}
+
+#song-header input[type=text] {
+	padding: 5px;
+	font-size: 14px;
+}
+
+#join {
+	display: inline-block;
+	color: #fff;
+	padding: 8px 10px;
+	font-size: 14px;
+	background: #777777;
+	background: -moz-linear-gradient(top, #777777 0%, #444444 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#777777), color-stop(100%,#444444));
+	background: -webkit-linear-gradient(top, #777777 0%,#444444 100%);
+	background: -o-linear-gradient(top, #777777 0%,#444444 100%);
+	background: -ms-linear-gradient(top, #777777 0%,#444444 100%);
+	background: linear-gradient(top, #777777 0%,#444444 100%);
+	border: 1px solid #000;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#join:hover {
+	background: #777777;
+	background: -moz-linear-gradient(top, #777777 0%, #555555 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#777777), color-stop(100%,#555555));
+	background: -webkit-linear-gradient(top, #777777 0%,#555555 100%);
+	background: -o-linear-gradient(top, #777777 0%,#555555 100%);
+	background: -ms-linear-gradient(top, #777777 0%,#555555 100%);
+	background: linear-gradient(top, #777777 0%,#555555 100%);
+}
+
+#join:active {
+	background: -moz-linear-gradient(top, #444444 0%, #777777 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#444444), color-stop(100%,#777777));
+	background: -webkit-linear-gradient(top, #444444 0%,#777777 100%);
+	background: -o-linear-gradient(top, #444444 0%,#777777 100%);
+	background: -ms-linear-gradient(top, #444444 0%,#777777 100%);
+	background: linear-gradient(top, #444444 0%,#777777 100%);
+}

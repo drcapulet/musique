@@ -6,18 +6,14 @@
     redislib = require("redis"),
     util = require("util"),
 	url = require("url"),
-	
-    PORT = 8003,
-    WEBROOT = path.join(path.dirname(__filename), '/webroot'),
-    nowjs = require("now");
+    WEBROOT = path.join(path.dirname(__filename), '/webroot');
 
 if (process.env.REDISTOGO_URL) {
 	var rtg   = url.parse(process.env.REDISTOGO_URL);
 	var redis = redislib.createClient(rtg.port, rtg.hostname);
-
 	redis.auth(rtg.auth.split(":")[1]);
 } else {
-  var redis = require("redis").createClient();
+	var redis = require("redis").createClient();
 }
 
 
@@ -27,12 +23,20 @@ var server = express.createServer();
 server.use('/static',express.static(WEBROOT));
 //Define route for the homepage
 server.get('/',function(req, response){
-	console.log(redis.keys('*'));
-    fs.readFile(WEBROOT+'/index.html', function(err, data){
-        response.writeHead(200, {'Content-Type':'text/html'});
-        response.write(data);
-        response.end();
-    });
+	console.log(req.headers['user-agent']);
+	if(/mobile/i.test(req.headers['user-agent'])) {
+		fs.readFile(WEBROOT+'/mobile/home.html', function(err, data){
+	        response.writeHead(200, {'Content-Type':'text/html'});
+	        response.write(data);
+	        response.end();
+	    });
+	} else {
+	    fs.readFile(WEBROOT+'/index.html', function(err, data){
+	        response.writeHead(200, {'Content-Type':'text/html'});
+	        response.write(data);
+	        response.end();
+	    });
+	}
 });
 //Define route for a playlist
 server.get('/playlist/*',function(req, response){
@@ -53,8 +57,8 @@ server.get('/mobile/*',function(req, response){
 });
 var port = process.env.PORT || 8080;
 server.listen(port);
+//var everyone = nowjs.initialize(server, { socketio: { transports: [] } });
 var everyone = nowjs.initialize(server);
-
 
 
 //CHANGE OWNERSHIP

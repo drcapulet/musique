@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <!--[if IEMobile 7 ]>    <html class="no-js iem7" manifest="default.appcache?v=1"> <![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" manifest="default.appcache?v=1"> <!--<![endif]-->
 
@@ -37,15 +37,15 @@
     }
 
     #header-wrapper {
-    background: #333 url(img/linen.png);
-    width: 100%;
-    height: auto;
-    margin: 0px 0px;
-    z-index: 1000;
-    padding: 10px 2px;
-    -webkit-box-shadow:0px 0px 1.5em #000;
-    -moz-box-shadow: 0px 0px 1.5em #000;
-    box-shadow:0px 0px 1.5em #000
+	    background: #333;
+	    width: 100%;
+	    height: auto;
+	    margin: 0px 0px;
+	    z-index: 1000;
+	    padding: 10px 2px;
+	    -webkit-box-shadow:0px 0px 1.5em #000;
+	    -moz-box-shadow: 0px 0px 1.5em #000;
+	    box-shadow:0px 0px 1.5em #000
 
     }
 
@@ -389,79 +389,80 @@
     #song-list .song-listing:last-child {
         border-bottom: none;
     }
+
+	#main p {
+		font-size: 1.8em;
+	}
+	
+	#main #main-center {
+		text-align: center;
+	}
+	
+	#main #main-center input {
+		padding: 5px;
+		font-size: 1.8em;
+		margin-top: 5px;
+	}
+	
+	#main #main-center button {
+		display: inline-block;
+		color: #fff;
+		padding: 15px 40px;
+		font-size: 14px;
+		background: #777777;
+		background: -moz-linear-gradient(top, #777777 0%, #444444 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#777777), color-stop(100%,#444444));
+		background: -webkit-linear-gradient(top, #777777 0%,#444444 100%);
+		background: -o-linear-gradient(top, #777777 0%,#444444 100%);
+		background: -ms-linear-gradient(top, #777777 0%,#444444 100%);
+		background: linear-gradient(top, #777777 0%,#444444 100%);
+		border: 1px solid #000;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		margin-top: 10px;
+	}
   </style>
 </head>
 
-<body onload="init()">
+<body>
 
   <div id="container">
     <div id="header-wrapper">
         <h1>Musique</h1>
     </div>
-    <div id="nav">
-        <div id="now-playing" class="nav-button"></div>
-        <div id="playlist" class="nav-button"></div>
-        <div id="search" class="nav-button"></div>
-    </div>
-    <div id="add-song-wrapper">
-    <div id="add-song" class="disabled">
-        <input id="song-search-box" placeholder="Add a song!"></input>
-        <div id="search-results"> </div>
-    </div>
 
-    <div id="song-list-wrapper">
-        <div id="song-list" class="disabled"></div>
-    </div>
-    <div id="main" role="main" onclick="">
-      <div class="off-left album-art" style=""></div>
-      <div class="current album-art" style=""></div>
-      <div class="next album-art" style="" ></div>
-      <div class="next2nd album-art" style=""></div>
-      <div class="off-right album-art" style=""></div>
-      <div id="info">
-        <div id="song-name">
-            <span id="song-name-text"></span>
-        </div>
-        <div id="song-artist">
-            <span id="song-artist-text"></span>
-        </div>
-        <div id="song-album">
-            <span id="song-album-text"></span>
-        </div>
-		<div id="song-progress-outer-wrapper"><div class="time" id="song-so-far">0:00</div><div id="song-progress-inner-wrapper"><div id="song-progress-wrapper"><div id="song-progress-played" style="width: 0%;">&nbsp;</div></div></div><div class="time" id="song-duration">0:00</div></div>
+	<div id="add-song-wrapper">
+	    <div id="add-song" class="disabled">
+	        <input id="song-search-box" placeholder="Add a song!" />
+	        <div id="search-results"> </div>
+	    </div>
 
-      </div>
-    </div>
+	    <div id="song-list-wrapper">
+	        <div id="song-list" class="disabled"></div>
+	    </div>
+	    <div id="main" role="main" onclick="">
+			<p>Join an existing room or create a new one:</p>
+			<div id="main-center"><form id="join-form"><input type="text" id="room" /><button id="join">Go!</button></form></div>
+	    </div>
+	</div>
+	
+
+	<div id="nav"></div>
 
     <div id="footer">
         <div id="song-under-controls">
         <div id="controls-wrapper">
-            <a href="#" id="song-previous">&nbsp;</a><a href="#" id="song-play-pause" class="paused">&nbsp;</a><a href="#" id="song-next">&nbsp;</a>
+            &nbsp;
         </div>
         </div>
     </div>
   </div> <!--! end of #container -->
   <script src='/static/mobile/js/libs/jquery-1.5.1.min.js'></script>
   <script src="/static/mobile/js/libs/modernizr-custom.js"></script>
-  <script src="/static/js/playlist.js"></script>
-  <script>
-	var audioPlaylist = new Playlist("", [], {});
-    audioPlaylist.playlistInit(false); // Parameter is a boolean for autoplay.
-  </script>
-  <script src="/static/mobile/js/search.js"></script>
-  <script src="/static/mobile/js/script.js"></script>
-  <script src="/static/mobile/js/iscroll-lite.js"></script>
-  <script src="/nowjs/now.js"></script>
-  <script src="/static/js/main.js"></script>
-  <script src="/static/js/current-player.js"></script>
-  <script src="/static/js/controls.js"></script>
-
-  <!-- scripts concatenated and minified via ant build script -->
-  <script src="/static/mobile/js/mylibs/helper.js"></script>
-  <!-- end concatenated and minified scripts-->
+  <script src="/static/js/homepage.js"></script>
 
   <script>
-    MBP.scaleFix();
     yepnope({
       test : Modernizr.mq('(min-width)'),
       nope : ['js/libs/respond.min.js']

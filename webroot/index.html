@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Social HTML5 Music Player</title>
+        <title>Musique</title>
         <meta charset="utf-8">
+		<link rel="stylesheet" href="/static/css/home.css" media="all">
+		<link href='http://fonts.googleapis.com/css?family=Rosario&v2' rel='stylesheet' type='text/css'>
     </head>
 
     <body>
-        <h1>Social HTML5 Music Player</h1>
-        <p>
-            Join an existing room or create a new one:
-            <input type="text" id="room"><button id="join">Go!</button>
-        </p>
+		<div id="song-header-wrapper">
+			<div id="song-header">
+				<h1>Musique</h1>
+		        <p>
+		            Join an existing room or create a new one:
+		            <form id="join-form"><input type="text" id="room" /><button id="join">Go!</button></form>
+		        </p>
+			</div>
+		</div>
 
         <script src="/static/lib/jquery.min.js"></script>
         <script src="/static/js/homepage.js"></script>

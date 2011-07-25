@@ -1,8 +1,14 @@
   var playlist;
     function init() {
-        audioPlaylist = new Playlist("", [], {});
-        audioPlaylist.playlistInit(false); // Parameter is a boolean for autoplay.
-
+		if (!audioPlaylist.renderjPlayer) {
+			miniScrollInit($("#song-artist"));
+			setTimeout("miniScroll($('#song-artist'))", 4000);
+			miniScrollInit($("#song-album"));
+			setTimeout("miniScroll($('#song-album'))", 4000);
+			miniScrollInit($("#song-name"));
+			setTimeout("miniScroll($('#song-name'))", 4000);
+		}
+		
         new MBP.fastButton(document.getElementById('playlist'), function(e) {
             document.getElementById('main').className = "disabled";
             document.getElementById('song-list').className = "";
@@ -31,6 +37,7 @@
             now.previousSong();
         });
         new MBP.fastButton(document.getElementById('song-play-pause'), function(e) {
+			console.log(e.target.className);
             if (e.target.className == "paused") {
                 now.play();
             }
@@ -38,6 +45,7 @@
                 now.pause();
             }
         });
+
         /*addSwipeListener(document.getElementById('detect-swipe'), function(e) {
             if (e.direction=="right") {
                 previous();
@@ -51,7 +59,7 @@
         fld.addEventListener('keyup',eventkeyup,false );
 
 
-    }
+    };
 
     var eventkeyup = function () {
 
