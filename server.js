@@ -58,7 +58,7 @@ server.get('/mobile/*',function(req, response){
 var port = process.env.PORT || 8080;
 server.listen(port);
 //var everyone = nowjs.initialize(server, { socketio: { transports: [] } });
-var everyone = nowjs.initialize(server, { socketio: { transports: ["flashsocket", "htmlfile", "xhr-polling", "jsonp-polling"] } } );
+var everyone = nowjs.initialize(server, { socketio: { transports: ["htmlfile", "xhr-polling", "jsonp-polling"] } } );
 
 
 //CHANGE OWNERSHIP
